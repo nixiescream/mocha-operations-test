@@ -4,11 +4,6 @@ const op = require('../operaciones');
 let a = 0;
 let b = 0;
 
-// before(() => {
-//     console.log('Before');
-// });
-
-
 describe('Operations', () => {
     beforeEach(() => {
         a = getRandomInt(0, 1000);
@@ -155,18 +150,56 @@ describe('Operations', () => {
     });
 
     describe('Exponential test', () => {
-        it('Get the base to the exponent power', () => {
+        it('Get the base to the exponent power (both positives)', () => {
             let res = op.exp(a, b);
     
             assert(res);
             assert.equal(res, a ^ b);
         });
+
+        it('Get the base to the exponent power (both negatives)', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+            let res = op.exp(a, b);
+    
+            assert(res);
+            assert.equal(res, a ^ b);
+        });
+
+        it('Get the base to the exponent power (positive base, negative exponent)', () => {
+            b = getRandomInt(-1000, -1);
+            let res = op.exp(a, b);
+    
+            assert(res);
+            assert.equal(res, a ^ b);
+        });
+
+        it('Get the base to the exponent power (negative base, positive exponent)', () => {
+            a = getRandomInt(-1000, -1);
+            let res = op.exp(a, b);
+    
+            assert(res);
+            assert.equal(res, a ^ b);
+        });
+
+        it('Positive square root', () => {
+            let res = op.sqrt(a);
+
+            assert(res);
+            assert.equal(res, Math.sqrt(a));
+        });
+
+        it('Negative square root', () => {
+            a = getRandomInt(-1000, -1);
+            try {
+                op.sqrt(a);
+                assert(false);
+            } catch(e) {
+                assert(true);
+            }
+        });
     });
 });
-
-// after(() => {
-//     console.log('After');
-// });
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
