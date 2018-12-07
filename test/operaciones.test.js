@@ -19,7 +19,7 @@ describe("Operaciones", () => {
         b = 0;
     });
 
-    it("Test sum", () => {
+    it("#sum()", () => {
         let res = op.sum(a, b);
 
         assert(res);
@@ -27,28 +27,28 @@ describe("Operaciones", () => {
         assert.equal(res, a + b);
     });
 
-    it("Test rest", () => {
+    it("#rest()", () => {
         let res = op.rest(a, b);
         
         assert(res);
         assert.equal(res, a - b);
     });
 
-    it('Test mult', () => {
+    it('#mult()', () => {
         let res = op.mult(a, b);
 
         assert(res);
         assert.equal(res, a * b);
     });
 
-    it('Test div', () => {
+    it('#div()', () => {
         let res = op.div(a, b);
 
         assert(res);
         assert.equal(res, a / b);
     })
 
-    it('Test div by 0', () => {
+    it('#div() by 0', () => {
         try {
             op.div(a, 0);
             assert(false);
@@ -57,14 +57,14 @@ describe("Operaciones", () => {
         }
     });
 
-    it('Test mod', () => {
+    it('#mod()', () => {
         let res = op.mod(a, b);
 
         assert(res);
         assert.equal(res, a % b);
     });
 
-    it('Test exp', () => {
+    it('#exp()', () => {
         let res = op.exp(a, b);
 
         assert(res);
