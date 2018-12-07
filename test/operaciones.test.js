@@ -4,11 +4,12 @@ const op = require('../operaciones');
 let a = 0;
 let b = 0;
 
-before(() => {
-    console.log('Before');
-});
+// before(() => {
+//     console.log('Before');
+// });
 
-describe("Operaciones", () => {
+
+describe('Operations', () => {
     beforeEach(() => {
         a = getRandomInt(0, 1000);
         b = getRandomInt(1000, 2000);
@@ -19,62 +20,153 @@ describe("Operaciones", () => {
         b = 0;
     });
 
-    it("#sum()", () => {
-        let res = op.sum(a, b);
+    describe('Add tests', () => {
+        it('Add two positive numbers', () => {
+            let res = op.sum(a, b);
+    
+            assert(res);
+            assert.ok(res >= 0);
+            assert.equal(res, a + b);
+        });
 
-        assert(res);
-        assert.ok(res >= 0);
-        assert.equal(res, a + b);
-    });
+        it('Add two negative numbers', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
 
-    it("#rest()", () => {
-        let res = op.rest(a, b);
-        
-        assert(res);
-        assert.equal(res, a - b);
-    });
+            let res = op.sum(a, b);
 
-    it('#mult()', () => {
-        let res = op.mult(a, b);
+            assert(res);
+            assert.ok(res < 0);
+            assert.equal(res, a + b);
+        });
 
-        assert(res);
-        assert.equal(res, a * b);
-    });
+        it('Add a positive number with a negative number', () => {
+            b = getRandomInt(-1000, -1);
 
-    it('#div()', () => {
-        let res = op.div(a, b);
+            let res = op.sum(a, b);
 
-        assert(res);
-        assert.equal(res, a / b);
+            assert(res);
+            assert.equal(res, a + b);
+        });
     })
 
-    it('#div() by 0', () => {
-        try {
-            op.div(a, 0);
-            assert(false);
-        } catch(e) {
-            assert(true);
-        }
+    describe('Substract tests', () => {
+        it('Substract two positive values', () => {
+            let res = op.rest(a, b);
+            
+            assert(res);
+            assert.equal(res, a - b);
+        });
+
+        it('Substract two negative numbers', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+
+            let res = op.rest(a, b);
+
+            assert(res);
+            assert.equal(res, a - b);
+        });
+
+        it('Substract a positive number with a negative number', () => {
+            b = getRandomInt(-1000, -1);
+
+            let res = op.rest(a, b);
+
+            assert(res);
+            assert.equal(res, a - b);
+        });
+    })
+
+    describe('Multiply tests', () => {
+        it('Multiply two positive numbers', () => {
+            let res = op.mult(a, b);
+    
+            assert(res);
+            assert.equal(res, a * b);
+        });
+
+        it('Multiply two negative numbers', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+            let res = op.mult(a, b);
+    
+            assert(res);
+            assert.equal(res, a * b);
+        });
+
+        it('Multiply a positive number with a negative number', () => {
+            b = getRandomInt(-1000, -1);
+            let res = op.mult(a, b);
+    
+            assert(res);
+            assert.equal(res, a * b);
+        });
     });
 
-    it('#mod()', () => {
-        let res = op.mod(a, b);
+    describe('Division tests', () => {
+        it('Divide two positive numbers (a > b)', () => {
+            let res = op.div(a, b);
+    
+            assert(res);
+            assert.equal(res, a / b);
+        });
 
-        assert(res);
-        assert.equal(res, a % b);
+        it('Divide two positive numbers (a < b)', () => {
+            let res = op.div(b, a);
+    
+            assert(res);
+            assert.equal(res, b / a);
+        });
+
+        it('Divide two negative numbers (a > b)', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+            let res = op.div(a, b);
+    
+            assert(res);
+            assert.equal(res, a / b);
+        });
+
+        it('Divide two negative numbers (a < b)', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+            let res = op.div(b, a);
+    
+            assert(res);
+            assert.equal(res, b / a);
+        });
+    
+        it('Divide by 0', () => {
+            try {
+                op.div(a, 0);
+                assert(false);
+            } catch(e) {
+                assert(true);
+            }
+        });
+
+        it('Get the module', () => {
+            let res = op.mod(a, b);
+    
+            assert(res);
+            assert.equal(res, a % b);
+        });
     });
 
-    it('#exp()', () => {
-        let res = op.exp(a, b);
-
-        assert(res);
-        assert.equal(res, a ^ b);
+    describe('Exponential test', () => {
+        it('#exp()', () => {
+            let res = op.exp(a, b);
+    
+            assert(res);
+            assert.equal(res, a ^ b);
+        });
     });
 });
 
-after(() => {
-    console.log('After');
-});
+// after(() => {
+//     console.log('After');
+// });
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
