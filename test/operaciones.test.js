@@ -131,6 +131,38 @@ describe('Operations', () => {
             assert(res);
             assert.equal(res, b / a);
         });
+
+        it('Divide two numbers (dividend: +a, divisor: -b)', () => {
+            b = getRandomInt(-1000, -1);
+            let res = op.div(a, b);
+    
+            assert(res);
+            assert.equal(res, a / b);
+        });
+
+        it('Divide two numbers (dividend: -a divisor: +b)', () => {
+            a = getRandomInt(-1000, -1);
+            let res = op.div(a, b);
+    
+            assert(res);
+            assert.equal(res, a / b);
+        });
+
+        it('Divide two numbers (dividend: +b, divisor: -a)', () => {
+            a = getRandomInt(-1000, -1);
+            let res = op.div(b, a);
+    
+            assert(res);
+            assert.equal(res, b / a);
+        });
+
+        it('Divide two numbers (dividend: -b divisor: +a)', () => {
+            b = getRandomInt(-1000, -1);
+            let res = op.div(b, a);
+    
+            assert(res);
+            assert.equal(res, b / a);
+        });
     
         it('Divide by 0', () => {
             try {
@@ -141,7 +173,32 @@ describe('Operations', () => {
             }
         });
 
-        it('Get the module of the division', () => {
+        it('Get the module of the division (dividend: +a, divisor: +b)', () => {
+            let res = op.mod(a, b);
+    
+            assert(res);
+            assert.equal(res, a % b);
+        });
+
+        it('Get the module of the division (dividend: -a, divisor: -b)', () => {
+            a = getRandomInt(-2000, -1000);
+            b = getRandomInt(-1000, -1);
+            let res = op.mod(a, b);
+    
+            assert(res);
+            assert.equal(res, a % b);
+        });
+
+        it('Get the module of the division (dividend: +a, divisor: -b)', () => {
+            b = getRandomInt(-1000, -1);
+            let res = op.mod(a, b);
+    
+            assert(res);
+            assert.equal(res, a % b);
+        });
+
+        it('Get the module of the division (dividend: -a, divisor: +b)', () => {
+            a = getRandomInt(-2000, -1000);
             let res = op.mod(a, b);
     
             assert(res);
@@ -149,7 +206,7 @@ describe('Operations', () => {
         });
     });
 
-    describe('Exponential test', () => {
+    describe('Exponent and square roots test', () => {
         it('Get the base to the exponent power (both positives)', () => {
             let res = op.exp(a, b);
     

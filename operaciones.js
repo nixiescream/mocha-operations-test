@@ -20,9 +20,29 @@ const sqrt = a => {
     if(a < 0){
         throw new Error('negative square root');
     }
-    
+
     return Math.sqrt(a);
-}
+};
+
+const mcm = (a, b) => {
+    
+};
+
+const mcd = (a, b) => {
+    if (b == 0){
+        return a;
+    } else {
+        return mcd(b, a % b);
+    }
+};
+
+const prim = a => {
+
+};
+
+const coprim = (a, b) => {
+
+};
 
 module.exports = {
     sum,
