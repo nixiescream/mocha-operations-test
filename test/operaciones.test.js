@@ -146,7 +146,7 @@ describe('Operations', () => {
             }
         });
 
-        it('Get the module', () => {
+        it('Get the module of the division', () => {
             let res = op.mod(a, b);
     
             assert(res);
@@ -155,7 +155,7 @@ describe('Operations', () => {
     });
 
     describe('Exponential test', () => {
-        it('#exp()', () => {
+        it('Get the base to the exponent power', () => {
             let res = op.exp(a, b);
     
             assert(res);
