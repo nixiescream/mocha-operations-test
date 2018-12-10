@@ -1,5 +1,8 @@
 const assert = require('assert');
 const op = require('../operaciones');
+const gcd = require('compute-gcd');
+const lcm = require('compute-lcm');
+const isPrime = require('is-prime');
 
 let a = 0;
 let b = 0;
@@ -254,6 +257,30 @@ describe('Operations', () => {
             } catch(e) {
                 assert(true);
             }
+        });
+    });
+
+    describe('Common factors tests', () => {
+        it('Get the least common multiple', () =>  {
+            let res = op.mcm(a, b);
+
+            assert(res);
+            assert.equal(res, lcm(a, b));
+        });
+
+        it('Get the greatest common divisor', () => {
+            let res = op.mcd(a, b);
+
+            assert(res);
+            assert.equal(res, gcd(a, b));
+        });
+    });
+
+    describe('Prime tests', () => {
+        it('Is a number prime?', () => {
+            let res = op.prim(a);
+
+            assert.equal(res, isPrime(a));
         });
     });
 });

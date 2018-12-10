@@ -21,23 +21,32 @@ const sqrt = a => {
         throw new Error('negative square root');
     }
 
-    return Math.sqrt(a);
+    let lastGuess, guess = a / 3;
+ 
+    do {
+        lastGuess = guess;
+        guess = (a / guess + guess) / 2;
+    } while(Math.abs(lastGuess - guess) > 5e-15);
+    
+    return guess;
 };
 
 const mcm = (a, b) => {
+    return (!a || !b) ? 0 : Math.abs((a * b) / mcd(a, b));
     
 };
 
 const mcd = (a, b) => {
-    if (b == 0){
-        return a;
-    } else {
-        return mcd(b, a % b);
-    }
+    return (b == 0) ? a : mcd(b, a % b);
 };
 
 const prim = a => {
-
+    for(var i = 2; i < a; i++) {
+        if(a % i === 0) {
+            return false;
+        }
+    }
+    return a > 1;
 };
 
 const coprim = (a, b) => {
@@ -51,5 +60,8 @@ module.exports = {
     div,
     mod,
     exp,
-    sqrt
+    sqrt,
+    mcd,
+    mcm,
+    prim
 };
