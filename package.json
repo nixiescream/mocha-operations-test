@@ -14,6 +14,7 @@
   "dependencies": {
     "compute-gcd": "^1.2.0",
     "compute-lcm": "^1.1.0",
+    "is-coprime": "^1.0.0",
     "is-prime": "^1.0.1"
   }
 }

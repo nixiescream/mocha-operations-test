@@ -3,6 +3,7 @@ const op = require('../operaciones');
 const gcd = require('compute-gcd');
 const lcm = require('compute-lcm');
 const isPrime = require('is-prime');
+const isCoprime = require('is-coprime');
 
 let a = 0;
 let b = 0;
@@ -282,6 +283,12 @@ describe('Operations', () => {
 
             assert.equal(res, isPrime(a));
         });
+
+        it('Are the numbers coprimes?', () => {
+            let res = op.coprim(a, b);
+
+            assert.equal(res, isCoprime(a, b));
+        })
     });
 });
 

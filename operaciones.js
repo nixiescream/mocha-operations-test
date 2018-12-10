@@ -50,7 +50,7 @@ const prim = a => {
 };
 
 const coprim = (a, b) => {
-
+    return mcd(a, b) === 1;
 };
 
 module.exports = {
@@ -63,5 +63,6 @@ module.exports = {
     sqrt,
     mcd,
     mcm,
-    prim
+    prim,
+    coprim
 };
