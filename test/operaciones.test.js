@@ -210,37 +210,35 @@ describe('Operations', () => {
         });
     });
 
-    describe('Exponent and square roots test', () => {
+    describe('Exponent, square roots and logarithms tests', () => {
         it('Get the base to the exponent power (both positives)', () => {
-            let res = op.exp(a, b);
+            let res = op.pow(a, b);
     
             assert(res);
-            assert.equal(res, a ^ b);
+            assert.equal(res, Math.pow(a,b));
         });
 
         it('Get the base to the exponent power (both negatives)', () => {
             a = getRandomInt(-2000, -1000);
             b = getRandomInt(-1000, -1);
-            let res = op.exp(a, b);
-    
-            assert(res);
-            assert.equal(res, a ^ b);
+            let res = op.pow(a, b);
+
+            assert.equal(res, Math.pow(a,b));
         });
 
         it('Get the base to the exponent power (positive base, negative exponent)', () => {
             b = getRandomInt(-1000, -1);
-            let res = op.exp(a, b);
+            let res = op.pow(a, b);
     
-            assert(res);
-            assert.equal(res, a ^ b);
+            assert.equal(res, Math.pow(a,b));
         });
 
         it('Get the base to the exponent power (negative base, positive exponent)', () => {
             a = getRandomInt(-1000, -1);
-            let res = op.exp(a, b);
+            let res = op.pow(a, b);
     
             assert(res);
-            assert.equal(res, a ^ b);
+            assert.equal(res, Math.pow(a,b));
         });
 
         it('Positive square root', () => {
@@ -254,6 +252,33 @@ describe('Operations', () => {
             a = getRandomInt(-1000, -1);
             try {
                 op.sqrt(a);
+                assert(false);
+            } catch(e) {
+                assert(true);
+            }
+        });
+
+        // it('Base 10 logarithm', () => {
+        //     let res = op.log10(a);
+
+        //     assert(res);
+        //     assert.equal(res, Math.log10(a));
+        // });
+
+        it('Base 10 logarithm of 0', () => {
+            try {
+                a = 0;
+                op.log10(a);
+                assert(false);
+            } catch(e) {
+                assert(true);
+            }
+        });
+
+        it('Base 10 logarithm of a negative number', () => {
+            try {
+                a = getRandomInt(-1000, -1);
+                op.log10(a);
                 assert(false);
             } catch(e) {
                 assert(true);
