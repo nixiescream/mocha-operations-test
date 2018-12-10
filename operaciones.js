@@ -36,7 +36,7 @@ const mcm = (a, b) => (!a || !b) ? 0 : Math.abs((a * b) / mcd(a, b));
 const mcd = (a, b) => (b == 0) ? a : mcd(b, a % b);
 
 const prim = a => {
-    for(var i = 2; i < a; i++) {
+    for(var i = 2; i < sqrt(a); i++) {
         if(a % i === 0) {
             return false;
         }
