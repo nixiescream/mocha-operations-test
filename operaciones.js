@@ -68,6 +68,10 @@ const log10 = a => {
     return ln(a) / ln(10);
 }
 
+const numberOfDecimals = (a, b) => {
+    return a.toFixed(b);
+}
+
 module.exports = {
     sum,
     rest,
@@ -81,5 +85,6 @@ module.exports = {
     mcm,
     prim,
     coprim,
-    log10
+    log10,
+    numberOfDecimals
 };
