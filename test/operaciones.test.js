@@ -189,7 +189,6 @@ describe('Operations', () => {
             b = getRandomInt(-1000, -1);
             let res = op.mod(a, b);
     
-            assert(res);
             assert.equal(res, a % b);
         });
 
@@ -241,11 +240,25 @@ describe('Operations', () => {
             assert.equal(res, Math.pow(a,b));
         });
 
+        it('Get the base to the exponent power (E base, positive exponent)', () => {
+            let res = op.exp(a);
+
+            assert(res);
+            assert.equal(res.toFixed(0), Math.exp(a).toFixed(0));
+        });
+
+        it('Get the base to the exponent power (E base, negative exponent)', () => {
+            a = getRandomInt(-1000, -1);
+            let res = op.exp(a);
+    
+            assert.equal(res.toFixed(1), Math.exp(a).toFixed(1));
+        });
+
         it('Positive square root', () => {
             let res = op.sqrt(a);
 
             assert(res);
-            assert.equal(res, Math.sqrt(a));
+            assert.equal(res.toFixed(2), Math.sqrt(a).toFixed(2));
         });
 
         it('Negative square root', () => {
@@ -258,12 +271,12 @@ describe('Operations', () => {
             }
         });
 
-        // it('Base 10 logarithm', () => {
-        //     let res = op.log10(a);
+        it('Base 10 logarithm', () => {
+            let res = op.log10(a);
 
-        //     assert(res);
-        //     assert.equal(res, Math.log10(a));
-        // });
+            assert(res);
+            assert.equal(res.toFixed(4), Math.log10(a).toFixed(4));
+        });
 
         it('Base 10 logarithm of 0', () => {
             try {

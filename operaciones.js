@@ -1,3 +1,5 @@
+const E = require('./e');
+
 const sum = (a, b) => a + b;
 
 const rest = (a, b) => a - b;
@@ -16,22 +18,24 @@ const mod = (a, b) => a % b;
 
 const pow = (a, b) => a ** b;
 
+const exp = b => E ** b;
+
 const sqrt = a => {
     if(a < 0){
         throw new Error('Negative square root of a number is not a real number');
     }
 
-    let lastGuess, guess = a / 3;
+    let guess = a / 3;
  
     do {
         lastGuess = guess;
         guess = (a / guess + guess) / 2;
-    } while(Math.abs(lastGuess - guess) > 5e-15);
+    } while(lastGuess - guess > 5e-20);
     
     return guess;
 };
 
-const mcm = (a, b) => (!a || !b) ? 0 : Math.abs((a * b) / mcd(a, b));
+const mcm = (a, b) => (!a || !b) ? 0 : (a * b) / mcd(a, b);
 
 const mcd = (a, b) => (b == 0) ? a : mcd(b, a % b);
 
@@ -46,6 +50,11 @@ const prim = a => {
 
 const coprim = (a, b) =>  mcd(a, b) === 1;
 
+const ln = a => {
+    const n = 100000000.0
+    return n * ((a ** (1/n)) - 1);
+}
+
 const log10 = a => {
     if(a === 0){
         throw new Error('Logarithm of 0 is not a real number');
@@ -54,6 +63,9 @@ const log10 = a => {
     if(a < 0){
         throw new Error('Logarithm of a negative number is not a real number');
     }
+
+    return ln(a) / ln(10);
+    
 }
 
 module.exports = {
@@ -63,6 +75,7 @@ module.exports = {
     div,
     mod,
     pow,
+    exp,
     sqrt,
     mcd,
     mcm,
