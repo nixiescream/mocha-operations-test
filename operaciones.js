@@ -1,4 +1,5 @@
 const E = require('./e');
+// const E = 2.718281828459045090795598298427648842334747314453125;
 
 const sum = (a, b) => a + b;
 
@@ -51,7 +52,7 @@ const prim = a => {
 const coprim = (a, b) =>  mcd(a, b) === 1;
 
 const ln = a => {
-    const n = 100000000.0
+    const n = 100000000;
     return n * ((a ** (1/n)) - 1);
 }
 
