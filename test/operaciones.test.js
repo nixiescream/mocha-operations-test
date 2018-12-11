@@ -244,7 +244,7 @@ describe('Operations', () => {
             let res = op.exp(a);
 
             assert(res);
-            assert.equal(res.toFixed(0), Math.exp(a).toFixed(0));
+            assert.equal(res.toFixed(1), Math.exp(a).toFixed(1));
         });
 
         it('Get the base to the exponent power (E base, negative exponent)', () => {

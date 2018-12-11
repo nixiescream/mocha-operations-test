@@ -18,7 +18,7 @@ const mod = (a, b) => a % b;
 
 const pow = (a, b) => a ** b;
 
-const exp = b => E ** b;
+const exp = a => E ** a;
 
 const sqrt = a => {
     if(a < 0){
@@ -65,7 +65,6 @@ const log10 = a => {
     }
 
     return ln(a) / ln(10);
-    
 }
 
 module.exports = {
